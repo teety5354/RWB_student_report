@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RWB Student Report</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #fff;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .top-left {
+      display: flex;
+      align-items: center;
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      height: 28px;
+      margin-right: 10px;
+    }
+
+    .top-left strong {
+      font-weight: bold;
+      font-size: 30px;
+    }
+
+    .search-box {
+      width: 700px;
+      max-width: 90%;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 18px 24px;
+      font-size: 18px;
+      border: 1px solid #dfe1e5;
+      border-radius: 9999px;
+      outline: none;
+      text-align: left;
+      box-sizing: border-box;
+      transition: 0.2s;
+      background-color: #fff;
+    }
+
+    .search-box input:focus {
+      box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+      border-color: transparent;
+    }
+
+    .result-card {
+      margin-top: 40px;
+      padding: 24px 32px;
+      background-color: #f9f9f9;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 600px;
+      max-width: 90%;
+      text-align: left;
+    }
+
+    .result-card h2 {
+      margin-top: 0;
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 16px;
+    }
+
+    .student-info p {
+      margin: 8px 0;
+      font-size: 18px;
+      color: #444;
+    }
+
+    .not-found {
+      margin-top: 40px;
+      font-size: 20px;
+      color: #c00;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-left">
+    <img src="https://rwb.ac.th/wp-content/uploads/2021/09/logo11.png" alt="RWB Logo" class="logo">
+    <span><strong>RWB</strong> student report</span>
+  </div>
+
+  <div class="search-box">
+    <form action="/search" method="get">
+      <input type="search" name="studentID" placeholder="Enter student ID" aria-label="Search student ID" required>
+    </form>
+  </div>
+
+  {% if student %}
+  <div class="result-card">
+    <h2>ผลการค้นหา</h2>
+    <div class="student-info">
+      <p><strong>ชื่อ:</strong> {{ student.name }}</p>
+      <p><strong>รหัสนักเรียน:</strong> {{ student_id }}</p>
+      <p><strong>คะแนน:</strong> {{ student.score }}/100</p>
+    </div>
+  </div>
+  {% elif student_id %}
+  <div class="not-found">
+    ไม่พบข้อมูลนักเรียนที่มีรหัส {{ student_id }}
+  </div>
+  {% endif %}
+</body>
+</html>
