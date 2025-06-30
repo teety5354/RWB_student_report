@@ -1,6 +1,6 @@
 # RWB Student Report
 
-# วิธีการ Run ในเครื่อง
+## วิธีการ Run ในเครื่อง
 
 รันโค้ดด้วย CMD 
 แก้โค้ดด้วย ***VScode/Python***
