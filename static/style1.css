@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RWB Student Report</title>
-  <style>
-    body {
+body {
       margin: 0;
       height: 100vh;
       background: #fff;
@@ -87,33 +80,3 @@
       font-size: 20px;
       color: #c00;
     }
-  </style>
-</head>
-<body>
-  <div class="top-left">
-    <img src="https://rwb.ac.th/wp-content/uploads/2021/09/logo11.png" alt="RWB Logo" class="logo">
-    <span><strong>RWB</strong> student report</span>
-  </div>
-
-  <div class="search-box">
-    <form action="/search" method="get">
-      <input type="search" name="studentID" placeholder="Enter student ID" aria-label="Search student ID" required>
-    </form>
-  </div>
-
-  {% if student %}
-  <div class="result-card">
-    <h2>ผลการค้นหา</h2>
-    <div class="student-info">
-      <p><strong>ชื่อ:</strong> {{ student.name }}</p>
-      <p><strong>รหัสนักเรียน:</strong> {{ student_id }}</p>
-      <p><strong>คะแนน:</strong> {{ student.score }}/100</p>
-    </div>
-  </div>
-  {% elif student_id %}
-  <div class="not-found">
-    ไม่พบข้อมูลนักเรียนที่มีรหัส {{ student_id }}
-  </div>
-  {% endif %}
-</body>
-</html>
