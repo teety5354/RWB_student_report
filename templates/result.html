@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
-    <link rel="stylesheet" href="{{ url_for('static',filename='style1.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style2.css') }}">
 </head>
 <body>
     {% if student %}
@@ -23,13 +23,12 @@
   </div>
   {% endif %}
     <!-- {% if student %}
-    <p>ID: {{ student_id }}</p>
-    <p>Name: {{ student.name }}</p>
-    <p>Score: {{ student.score }}</p>
+        <p>ID: {{ student_id }}</p>
+        <p>Name: {{ student.name }}</p>
+        <p>Score: {{ student.score }}</p>
     {% else %}
-    <p>ไม่พบข้อมูลนักเรียนที่มีรหัส {{ student_id }}</p>
+        <p>ไม่พบข้อมูลนักเรียนที่มีรหัส {{ student_id }}</p>
     {% endif %} -->
-
     <a href="{{ url_for('index') }}">← กลับหน้าหลัก</a>
 </body>
 </html>
