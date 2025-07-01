@@ -19,8 +19,16 @@ body {
     }
 
     .logo {
-      height: 28px;
+      height: 64px;
       margin-right: 10px;
+    }
+
+    .topheader {
+      font-size: 50px;
+    }
+
+    .topheader1 {
+      font-size: 55px;
     }
 
     .top-left strong {
