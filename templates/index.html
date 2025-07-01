@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href= "{{ url_for('static',filename='style1.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
   <title>RWB Student Report</title>
 </head>
 <body>
@@ -16,6 +17,11 @@
     <form action="/search" method="get">
       <input type="search" name="studentID" placeholder="Enter student ID" aria-label="Search student ID" required>
     </form>
+  </div>
+  <div class="credits">
+    <footer>
+      <p>จัดทำโดยงานกิจการนักเรียนและเครื่อข่ายการศึกษา กลุ่มบริหารทั่วไป</p>
+    </footer>
   </div>
 </body>
 </html>

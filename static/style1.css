@@ -91,3 +91,10 @@ body {
       font-size: 20px;
       color: #c00;
     }
+    footer {
+      text-align: center;
+      font-size: 22.5px;
+      font-family: 'Noto Sans Thai';
+      color: #999999;
+      padding: 30px;
+    }
