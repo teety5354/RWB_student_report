@@ -4,6 +4,7 @@ conn = sqlite3.connect('student.db')
 cur = conn.cursor()
 
 # ลบนักเรียนที่มี ID = '37871'
+#('37617', 'ปัณณวิชญ์ จรูญภาค', '100'))
 cur.execute("DELETE FROM students WHERE id = ?", ('37575',))
 
 conn.commit()

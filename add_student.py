@@ -5,8 +5,9 @@ cur = conn.cursor()
 
 # เพิ่มข้อมูลนักเรียนใหม่
 cur.execute("INSERT OR IGNORE INTO students (id, name, score) VALUES (?, ?, ?)", 
-            ('37617', 'ปัณณวิชญ์ จรูญภาค', '100'))
-
+            ('37858', 'พศิน ปักเขมายัง', '0'))
+cur.execute("INSERT OR IGNORE INTO students (id, name, score) VALUES (?, ?, ?)", 
+            ('39947', 'ปรัตถกร บุญประกอบ', '0'))
 conn.commit()
 conn.close()
 
