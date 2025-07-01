@@ -48,6 +48,6 @@ def home():
 
 @app.route('/search')
 def search():
-    student_id = request.args.get('studentID')
+    student_id = request.args.get('studentID').strip()
     student = students.get(student_id)
-    return f"ID: {student_id}<br>Name: {student['name']}<br>Score: {student['score']}"
+    return render_template('result.html', student=student, student_id=student_id)
