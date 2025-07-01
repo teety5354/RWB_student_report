@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='style2.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
 </head>
 <body>
     {% if student %}
@@ -13,7 +14,7 @@
         <div class="student-info">
         <p><strong>ชื่อ:</strong> {{ student.name }}</p>
         <p><strong>รหัสประจำตัวนักเรียน:</strong> {{ student_id }}</p>
-        <p><strong>คะแนนพฤติกรรม:</strong> -{{ student.score }}</p>
+        <p><strong>คะแนนพฤติกรรม:</strong> {{ student.score }}</p>
         </div>
     </div>
   
@@ -22,13 +23,6 @@
         ไม่พบข้อมูลนักเรียนที่มีรหัส {{ student_id }}
     </div>
     {% endif %}
-    <!-- {% if student %}
-        <p>ID: {{ student_id }}</p>
-        <p>Name: {{ student.name }}</p>
-        <p>Score: {{ student.score }}</p>
-    {% else %}
-        <p>ไม่พบข้อมูลนักเรียนที่มีรหัส {{ student_id }}</p>
-    {% endif %} -->
     <a href="{{ url_for('index') }}" class="indexlink">← กลับหน้าหลัก</a>
 </body>
 </html>
