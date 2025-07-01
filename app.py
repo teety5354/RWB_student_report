@@ -27,7 +27,7 @@ def search():
     cur = db.execute('SELECT * FROM students WHERE id = ?', (student_id,))
     row = cur.fetchone()
     if row:
-        return f"ID: {row['id']}<br>Name: {row['name']}<br>Score: {row['score']}"
+        return render_template('result.html', student=row, student_id=student_id)
     else:
         return "ไม่พบข้อมูลนักเรียน"
 

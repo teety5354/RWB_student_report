@@ -17,11 +17,11 @@
         </div>
     </div>
   
-  {% elif student_id %}
-  <div class="not-found">
-    ไม่พบข้อมูลนักเรียนที่มีรหัส {{ student_id }}
-  </div>
-  {% endif %}
+    {% elif student_id %}
+    <div class="not-found">
+        ไม่พบข้อมูลนักเรียนที่มีรหัส {{ student_id }}
+    </div>
+    {% endif %}
     <!-- {% if student %}
         <p>ID: {{ student_id }}</p>
         <p>Name: {{ student.name }}</p>
