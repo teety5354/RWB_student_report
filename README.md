@@ -5,6 +5,7 @@
 
 [**venv & Flask**](https://flask.palletsprojects.com/en/stable/installation/#python-version)
 
+## โหลดไว้ก็ดีเดี๋ยวจะได้ใช้:
 [**docker (ใช้ลง node.js/npm)**](https://www.docker.com/get-started/)
 
 [**npm & node.js**](https://nodejs.org/en/download)
