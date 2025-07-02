@@ -117,11 +117,11 @@ body {
       text-decoration: none;
       font-size: 25px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: 0.3s ease-in-out;
     }
 
     .login-button:hover {
-      background-color: #ff9858;
+      background-color: #fe7b34;
       color: white;
     }
     .github-icon-wrapper {
