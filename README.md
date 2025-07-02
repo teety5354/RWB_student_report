@@ -29,4 +29,6 @@ venv\Scripts\activate
 
 pip install flask
 # for prime\
+cd ที่อยู่
+venv\Scripts\activate
 py app.py
