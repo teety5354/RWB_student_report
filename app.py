@@ -31,6 +31,10 @@ def search():
     else:
         return "ไม่พบข้อมูลนักเรียน"
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
 
@@ -51,3 +55,7 @@ def search():
     student_id = request.args.get('studentID').strip()
     student = students.get(student_id)
     return render_template('result.html', student=student, student_id=student_id)
+
+@app.route('/login')
+def login():
+    return render_template('login.html')

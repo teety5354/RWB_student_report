@@ -93,14 +93,34 @@ body {
       color: #c00;
     }
     footer {
-  text-align: center;
-  font-size: 22.5px;
-  font-family: 'Noto Sans Thai';
-  color: #999999;
-  padding: 30px;
-  transition: color 0.3s ease;
-}
+    text-align: center;
+    font-size: 22.5px;
+    font-family: 'Noto Sans Thai';
+    color: #999999;
+    padding: 30px;
+    transition: color 0.3s ease;
+    }
+    footer:hover {
+      color: #333333;
+    }
+    .top-right {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .login-button {
+      padding: 10px 20px;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-footer:hover {
-  color: #333333;
-}
+    .login-button:hover {
+      background-color: #ff9858;
+      color: white;
+    }
