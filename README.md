@@ -5,10 +5,14 @@
 
 [**venv & Flask**](https://flask.palletsprojects.com/en/stable/installation/#python-version)
 
-## โหลดไว้ก็ดีเดี๋ยวจะได้ใช้:
-[**docker (ใช้ลง node.js/npm)**](https://www.docker.com/get-started/)
+## เดี๋ยวจะได้ใช้:
+[**JavaScript**](https://www.java.com/en/)
 
-[**npm & node.js**](https://nodejs.org/en/download)
+[**docker**](https://www.docker.com/get-started/)  (ใช้ลง node.js/npm)
+
+[**npm & node.js**](https://nodejs.org/en/download) (backend สำหรับ login & password hashing/encryption)
+
+[**Google API & Service**](https://console.cloud.google.com/) (ใช้เชื่อม google sheets เป็น database)
 
 (สามารถกดลิงค์เพื่ออ่านคู่มือ/วิธีการลง Library พวกนี้ได้เลย)
 
