@@ -40,7 +40,7 @@
     .login-container button {
       width: 100%;
       padding: 12px;
-      background-color: #ff9858;
+      background-color: #696969;
       border: none;
       color: #fff;
       font-size: 16px;
@@ -50,7 +50,7 @@
     }
 
     .login-container button:hover {
-      background-color: #ff7d2d;
+      background-color: #4f4f4f;
     }
 
     .login-container .extra-links {
@@ -59,7 +59,7 @@
     }
 
     .login-container .extra-links a {
-      color: #ff9858;
+      color: #4f4f4f;
       text-decoration: none;
       font-size: 14px;
     }

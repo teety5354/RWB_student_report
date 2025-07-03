@@ -31,3 +31,11 @@
     padding: 20px;
     font-size: 200%;
 }
+.not-found{
+   font-size: 300%;
+    max-block-size: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    padding-left: 30px;
+    padding-bottom: 5px;
+}
