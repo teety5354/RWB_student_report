@@ -20,12 +20,9 @@
   
     {% elif student_id %}
     <div class="not-found">
-        <h1>ไม่พบข้อมูลนักเรียนที่มีรหัส {{ student_id }}</h1>
+        <h1>ไม่พบข้อมูลนักเรียนที่มีรหัสดังกล่าว</h1>
     </div>
     {% endif %}
-    <div class="not-found">
-        <h1><strong>ไม่พบข้อมูลนักเรียนที่มีรหัสดังกล่าว</strong></h1>
-    </div>
     <a href="{{ url_for('index') }}" class="indexlink">← กลับหน้าหลัก</a>
 </body>
 </html>
