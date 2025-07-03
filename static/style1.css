@@ -111,18 +111,23 @@ body {
     }
     .login-button {
       padding: 10px 20px;
-      color: black;
       border: none;
       border-radius: 5px;
       text-decoration: none;
       font-size: 25px;
       cursor: pointer;
-      transition: 0.25s ease-in-out;
+      transition: 0.35s ease-in-out;
+      background-color: #343434;
+      color: white;
+      
     }
 
     .login-button:hover {
-      background-color: #343434;
+      /* background-color: #343434;
+      color: white; */
       color: white;
+      background-color: #585858;
+      font-size: 30px;
     }
     .github-icon-wrapper {
       position: fixed;
