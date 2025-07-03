@@ -29,7 +29,7 @@ def search():
     if row:
         return render_template('result.html', student=row, student_id=student_id)
     else:
-        return "ไม่พบข้อมูลนักเรียน"
+        return render_template('result.html')
 
 @app.route('/login')
 def login():
