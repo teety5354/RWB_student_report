@@ -9,7 +9,7 @@ DATABASE = 'student.db'
 app.secret_key = 'your-secret-key'  # Required for session login
 
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('rwb-sb-account-db-55ee40ed4a2d.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name('rwb-sb-account-db-da8565c59ec7.json', scope)
 client = gspread.authorize(creds)
 sheet = client.open('RWB-SR Account Database').sheet1 # Google Sheets
 
@@ -59,9 +59,9 @@ def login():
                 session['user'] = username_input
                 return redirect(url_for('dashboard'))
             else:
-                flash("Incorrect password", "error")
+                flash("Incorrect Username or Password", "error")
         else:
-            flash("User not found", "error")
+            flash("Incorrect Username or Password", "error")
 
     return render_template('login.html')
 
