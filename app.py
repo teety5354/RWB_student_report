@@ -59,9 +59,9 @@ def login():
                 session['user'] = username_input
                 return redirect(url_for('dashboard'))
             else:
-                flash("Incorrect password", "error")
+                flash("Incorrect Username or Password", "error")
         else:
-            flash("User not found", "error")
+            flash("404 User Not Found", "error")
 
     return render_template('login.html')
 
