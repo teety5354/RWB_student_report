@@ -5,16 +5,19 @@
 
 [**venv & Flask**](https://flask.palletsprojects.com/en/stable/installation/#python-version)
 
-## เดี๋ยวจะได้ใช้:
 [**JavaScript**](https://www.java.com/en/)
-
-[**docker**](https://www.docker.com/get-started/)  (ใช้ลง node.js/npm)
-
-[**npm & node.js**](https://nodejs.org/en/download) (backend สำหรับ login & password hashing/encryption)
 
 [**Google API & Service**](https://console.cloud.google.com/) (ใช้เชื่อม google sheets เป็น database)
 
 (สามารถกดลิงค์เพื่ออ่านคู่มือ/วิธีการลง Library พวกนี้ได้เลย)
+## โปรเจคนี้ต้องใช้ไฟล์ account-service.json:
+ไฟล์นี้ใช้สำหรับเชื่อมข้อมูลระหว่าง backend กับ database และไม่สามารถ commit ลง GitHub ได้ ไม่งั้นจะถูกผิดทิ้งทันที
+
+ถ้าหากต้องการไฟล์ account-service.json ให้ขอมาทาง Discord DM ***เท่านั้น***
+
+เมื่อได้ไฟล์ไปแล้วให้วางไว้ในที่เดียวกันกับ app.py
+
+### ห้ามเปลี่ยนชื่อหรือโค้ดข้างในไฟล์ account-service.json หรือ .gitignore เด็ดขาด
 
 ## วิธีการ Run ในเครื่อง
 รันโค้ดด้วย CMD 
@@ -39,5 +42,7 @@ venv\Scripts\activate
 pip install flask gspread oauth2client bcrypt
 # for prime\
 cd ที่อยู่
+
 venv\Scripts\activate
+
 py app.py
