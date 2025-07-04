@@ -9,6 +9,8 @@
 
 [**Google API & Service**](https://console.cloud.google.com/) (ใช้เชื่อม google sheets เป็น database)
 
+**gspread oauth2client bcrypt**
+
 (สามารถกดลิงค์เพื่ออ่านคู่มือ/วิธีการลง Library พวกนี้ได้เลย)
 ## โปรเจคนี้ต้องใช้ไฟล์ account-service.json:
 ไฟล์นี้ใช้สำหรับเชื่อมข้อมูลระหว่าง backend กับ database และไม่สามารถ commit ลง GitHub ได้ ไม่งั้นจะถูกผิดทิ้งทันที
