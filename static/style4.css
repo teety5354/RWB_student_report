@@ -1,0 +1,50 @@
+    body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .top-right {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+    .logout-button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 25px;
+        cursor: pointer;
+        transition: 0.35s ease-in-out;
+        background-color: #343434;
+        color: white;
+    }
+
+    .logout-button:hover {
+        color: white;
+        background-color: #585858;
+        font-size: 30px;
+    }
+    .github-icon-wrapper {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 9999;
+      width: 50px;
+      height: 50px;
+      padding: 5px;
+      padding-top: 0px;
+      transition: 0.5s ease-in-out;
+    }
+
+    .github-icon-wrapper img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .github-icon-wrapper:hover {
+      width: 65px;
+      height: 65px;
+    }
+    .welcomemessage {
+        text-align: center;
+    }

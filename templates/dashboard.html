@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static',filename='style1.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style4.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <h1>Welcome, {{ user }}!</h1>
-    <p><a href="{{ url_for('logout') }}">Logout</a></p>
+    <div class="top-right">
+        <a href="/logout" class="logout-button"><strong>Logout</strong></a>
+    </div>
+    <div>
+    <a href="https://github.com/teety5354/RWB_student_report"
+     class="github-icon-wrapper"
+     target="_blank"
+     rel="noopener noreferrer">
+    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+         alt="GitHub">
+    </a>
+    </div>
+    <h1 class="welcomemessage">Welcome, {{ user }}!</h1>
 </body>
 </html>
