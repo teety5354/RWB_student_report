@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for, session, flash
+from flask import Flask, request, render_template, redirect, url_for, session, flash, g
 import sqlite3
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
@@ -9,7 +9,7 @@ DATABASE = 'student.db'
 app.secret_key = 'your-secret-key'  # Required for session login
 
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('rwb-sb-account-db-bc4c04a52592.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name('rwb-sb-account-db-55ee40ed4a2d.json', scope)
 client = gspread.authorize(creds)
 sheet = client.open('RWB-SR Account Database').sheet1 # Google Sheets
 
@@ -50,7 +50,6 @@ def login():
         username_input = request.form['username']
         password_input = request.form['password']
 
-        # Get all users from Google Sheet
         users = sheet.get_all_records()
         user = next((u for u in users if u['username'] == username_input), None)
 
