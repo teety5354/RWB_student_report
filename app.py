@@ -11,7 +11,7 @@ app.secret_key = 'your-secret-key'  # Required for session login
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 creds = ServiceAccountCredentials.from_json_keyfile_name('rwb-sb-account-db-da8565c59ec7.json', scope)
 client = gspread.authorize(creds)
-sheet = client.open('RWB-SR Account Database').sheet1 # Google Sheets
+sheet = client.open('RWB-SR Database').sheet1 # Google Sheets
 
 def get_db():
     if 'db' not in g:
