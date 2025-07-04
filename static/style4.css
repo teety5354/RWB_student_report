@@ -1,5 +1,14 @@
     body {
         font-family: 'Helvetica Neue', Arial, sans-serif;
+        margin: 0;
+        height: 100vh;
+        background: #fff;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
     }
     .top-right {
         position: fixed;
@@ -47,4 +56,61 @@
     }
     .welcomemessage {
         text-align: center;
+        z-index: 9999;
+        max-width: 90%;
+    }
+    .welcomeuser {
+        color: orangered;
+    }
+    .top-left {
+      display: flex;
+      align-items: center;
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      height: 4em;
+      margin-right: 10px;
+      padding: 15px;
+    }
+
+    .topheader {
+      font-size: 1.5em;
+      color: #000000;
+    }
+
+    .rwb {
+      font-size: 2em;
+    }
+
+    .top-left strong {
+      font-weight: bold;
+      font-size: 30px;
+    }
+
+    .search-box {
+      width: 1000%;
+      max-width: 80%;
+      height: auto;
+      max-height: 50%;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 18px 24px;
+      font-size: 18px;
+      border: 2.5px solid #dfe1e5;
+      border-radius: 9999px;
+      outline: none;
+      text-align: left;
+      box-sizing: border-box;
+      transition: 0.2s;
+      background-color: #fff;
+    }
+
+    .search-box input:focus {
+      box-shadow: 0 10px 15px rgba(32,33,36,0.28);
+      border-color: #dfdfdf;
     }

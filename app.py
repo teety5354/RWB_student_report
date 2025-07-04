@@ -11,7 +11,7 @@ app.secret_key = 'your-secret-key'  # session login
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 creds = ServiceAccountCredentials.from_json_keyfile_name('rwb-sb-account-db-da8565c59ec7.json', scope)
 client = gspread.authorize(creds)
-sheet = client.open('RWB-SR Database').sheet1 # connecting google sheets naja
+accountdata = client.open('RWB-SR Database').sheet1 # connecting account data google sheets naja
 
 def get_db():
     if 'db' not in g:
@@ -27,6 +27,8 @@ def close_db(error):
 
 @app.route('/')
 def index():
+    if 'user' in session:
+        return redirect(url_for('dashboard'))
     return render_template('index.html')
 
 @app.route('/search')
@@ -46,11 +48,13 @@ def search():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if 'user' in session:
+        return redirect(url_for('dashboard'))
     if request.method == 'POST':
         username_input = request.form['username']
         password_input = request.form['password']
 
-        users = sheet.get_all_records()
+        users = accountdata.get_all_records()
         user = next((u for u in users if u['username'] == username_input), None)
 
         if user:
