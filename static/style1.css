@@ -63,35 +63,6 @@ body {
       border-color: #dfdfdf;
     }
 
-    .result-card {
-      margin-top: 40px;
-      padding: 24px 32px;
-      background-color: #f9f9f9;
-      border-radius: 16px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      width: 600px;
-      max-width: 90%;
-      text-align: left;
-    }
-
-    .result-card h2 {
-      margin-top: 0;
-      font-size: 24px;
-      color: #333;
-      margin-bottom: 16px;
-    }
-
-    .student-info p {
-      margin: 8px 0;
-      font-size: 18px;
-      color: #444;
-    }
-
-    .not-found {
-      margin-top: 40px;
-      font-size: 20px;
-      color: #c00;
-    }
     footer {
     text-align: center;
     font-size: 22.5px;
