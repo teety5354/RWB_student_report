@@ -27,6 +27,8 @@ def close_db(error):
 
 @app.route('/')
 def index():
+    if 'user' in session:
+        return redirect(url_for('dashboard'))
     return render_template('index.html')
 
 @app.route('/search')
@@ -46,6 +48,8 @@ def search():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if 'user' in session:
+        return redirect(url_for('dashboard'))
     if request.method == 'POST':
         username_input = request.form['username']
         password_input = request.form['password']
