@@ -36,7 +36,7 @@ python -m venv venv
 
 venv\Scripts\activate
 
-pip install flask
+pip install flask gspread oauth2client bcrypt
 # for prime\
 cd ที่อยู่
 venv\Scripts\activate

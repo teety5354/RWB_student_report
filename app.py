@@ -1,8 +1,17 @@
-from flask import Flask, request, render_template, g
+from flask import Flask, request, render_template, redirect, url_for, session, flash
 import sqlite3
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import bcrypt
 
 app = Flask(__name__)
 DATABASE = 'student.db'
+app.secret_key = 'your-secret-key'  # Required for session login
+
+scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+creds = ServiceAccountCredentials.from_json_keyfile_name('rwb-sb-account-db-bc4c04a52592.json', scope)
+client = gspread.authorize(creds)
+sheet = client.open('RWB-SR Account Database').sheet1 # Google Sheets
 
 def get_db():
     if 'db' not in g:
@@ -31,9 +40,42 @@ def search():
     else:
         return render_template('result.html')
 
-@app.route('/login')
+# @app.route('/login')
+# def login():
+#     return render_template('login.html')
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        username_input = request.form['username']
+        password_input = request.form['password']
+
+        # Get all users from Google Sheet
+        users = sheet.get_all_records()
+        user = next((u for u in users if u['username'] == username_input), None)
+
+        if user:
+            stored_hash = user['password_hash']
+            if bcrypt.checkpw(password_input.encode('utf-8'), stored_hash.encode('utf-8')):
+                session['user'] = username_input
+                return redirect(url_for('dashboard'))
+            else:
+                flash("Incorrect password", "error")
+        else:
+            flash("User not found", "error")
+
     return render_template('login.html')
+
+@app.route('/dashboard')
+def dashboard():
+    if 'user' not in session:
+        return redirect(url_for('login'))
+    return f"Welcome, {session['user']}!"
+
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)
