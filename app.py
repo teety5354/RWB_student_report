@@ -6,12 +6,12 @@ import bcrypt
 
 app = Flask(__name__)
 DATABASE = 'student.db'
-app.secret_key = 'your-secret-key'  # Required for session login
+app.secret_key = 'your-secret-key'  # session login
 
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 creds = ServiceAccountCredentials.from_json_keyfile_name('rwb-sb-account-db-da8565c59ec7.json', scope)
 client = gspread.authorize(creds)
-sheet = client.open('RWB-SR Database').sheet1 # Google Sheets
+sheet = client.open('RWB-SR Database').sheet1 # connecting google sheets naja
 
 def get_db():
     if 'db' not in g:
@@ -78,25 +78,3 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-from flask import Flask, render_template, request
-
-app = Flask(__name__)
-
-# ตัวอย่างฐานข้อมูลจำลอง
-students = {
-}
-
-@app.route('/', methods=['GET'])
-def home():
-    return render_template('index.html')
-
-@app.route('/search')
-def search():
-    student_id = request.args.get('studentID').strip()
-    student = students.get(student_id)
-    return render_template('result.html', student=student, student_id=student_id)
-
-@app.route('/login')
-def login():
-    return render_template('login.html')
