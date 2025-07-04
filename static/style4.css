@@ -57,6 +57,7 @@
     .welcomemessage {
         text-align: center;
         z-index: 9999;
+        max-width: 90%;
     }
     .welcomeuser {
         color: orangered;
