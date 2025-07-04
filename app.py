@@ -12,7 +12,6 @@ scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/au
 creds = ServiceAccountCredentials.from_json_keyfile_name('rwb-sb-account-db-da8565c59ec7.json', scope)
 client = gspread.authorize(creds)
 accountdata = client.open('RWB-SR Database').sheet1 # connecting account data google sheets naja
-studentdata = client.open('RWB-SR Database').sheet2 # connecting student data google sheets kub
 
 def get_db():
     if 'db' not in g:
