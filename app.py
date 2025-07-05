@@ -14,6 +14,16 @@ client = gspread.authorize(creds)
 accountdata = client.open('RWB-SR Account Database').sheet1 # connecting account data google sheets naja
 studentdata = client.open('RWB-SR Student Database').sheet1
 
+DEDUCTION_REASONS = {
+    "101-123": ("", 5),
+    "201-211": ("", 10),
+    "301-309": ("", 20),
+    "401-412": ("", 30),
+    "501-509": ("ประเภท ปค.2", 30),
+    "510-512": ("ประเภท ปค.2 (สิ่งเสพติด)", 30),
+    "อื่นๆ": ("", 0),  # ต้องกรอกรายละเอียดเพิ่มเติม
+}
+
 # def get_db():
 #     if 'db' not in g:
 #         g.db = sqlite3.connect(DATABASE)
@@ -43,13 +53,76 @@ def index():
 #     else:
 #         return render_template('result.html')
 
-@app.route('/search')
-def search():
-    student_id = request.args.get('studentID', '').strip()
-    students = studentdata.get_all_records()
-    student = next((s for s in students if str(s['id']) == student_id), None)
+# @app.route('/search')
+# def search():
+#     student_id = request.args.get('studentID', '').strip()
+#     students = studentdata.get_all_records()
+#     student = next((s for s in students if str(s['id']) == student_id), None)
 
-    return render_template('result.html', student=student, student_id=student_id)
+#     return render_template('result.html', student=student, student_id=student_id, deduction_reasons=DEDUCTION_REASONS)
+
+
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    student_id = request.values.get('studentID', '').strip()
+    students = studentdata.get_all_records()
+
+    student = None
+    row_index = None
+    for idx, s in enumerate(students, start=2):
+        if str(s['id']) == student_id:
+            student = s
+            row_index = idx
+            break
+
+    if request.method == 'POST':
+        if 'user' not in session:
+            flash("ต้องเข้าสู่ระบบก่อน", "error")
+            return redirect(url_for('login'))
+
+        reason_code = request.form['reason_code']
+        reason_text, deduct_score = DEDUCTION_REASONS.get(reason_code, ("ไม่ทราบเหตุผล", 0))
+
+        if reason_code == "513":
+            custom_detail = request.form.get("custom_reason_detail", "").strip()
+            if custom_detail:
+                reason_text = f"513 - {custom_detail}"
+
+        try:
+            current_score = int(student['behaviour score'])
+            new_score = max(0, current_score - deduct_score)
+            # Update score
+            studentdata.update_cell(
+                row_index,
+                list(student.keys()).index('behaviour score') + 1,
+                new_score
+            )
+
+            # Optional: log this deduction to a separate sheet
+            logsheet = client.open("RWB-SR Deduction Log").sheet1
+            logsheet.append_row([
+                datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                student['id'],
+                student['surname'] + ' ' + student['lastname'],
+                reason_text,
+                deduct_score,
+                session['user']
+            ])
+
+            # Refresh student
+            students = studentdata.get_all_records()
+            student = next((s for s in students if str(s['id']) == student_id), None)
+
+            flash(f"หักคะแนนสำเร็จ: {deduct_score} คะแนน ({reason_text})", "success")
+        except Exception as e:
+            flash("เกิดข้อผิดพลาด: ไม่สามารถหักคะแนนได้", "error")
+
+    return render_template(
+        'result.html',
+        student=student,
+        student_id=student_id,
+        deduction_reasons=DEDUCTION_REASONS
+    )
 
 # @app.route('/login')
 # def login():
