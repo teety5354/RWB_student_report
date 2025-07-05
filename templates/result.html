@@ -12,9 +12,11 @@
     <div class="result-card">
     <h1>ผลการค้นหา</h1>
         <div class="student-info">
-        <p><strong>ชื่อ:</strong> {{ student.name }}</p>
-        <p><strong>รหัสประจำตัวนักเรียน:</strong> {{ student_id }}</p>
-        <p><strong>คะแนนพฤติกรรม:</strong> {{ student.score }}</p>
+            <p><strong>ชื่อ-สกุล:</strong> {{ student['prefix'] }} {{ student['surname'] }} {{ student['lastname'] }}</p>
+            <p><strong>ระดับชั้น:</strong> ม.{{ student['grade'] }}/{{ student['class'] }}</p>
+            <p><strong>เลขที่:</strong> {{ student['no.'] }}</p>
+            <p><strong>รหัสประจำตัว:</strong> {{ student['id'] }}</p>
+            <p><strong>คะแนนพฤติกรรม:</strong> {{ student['score'] }}</p>
         </div>
     </div>
   

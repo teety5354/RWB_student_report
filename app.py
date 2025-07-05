@@ -11,19 +11,20 @@ app.secret_key = 'your-secret-key'  # session login
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 creds = ServiceAccountCredentials.from_json_keyfile_name('rwb-sb-account-db-da8565c59ec7.json', scope)
 client = gspread.authorize(creds)
-accountdata = client.open('RWB-SR Database').sheet1 # connecting account data google sheets naja
+accountdata = client.open('RWB-SR Account Database').sheet1 # connecting account data google sheets naja
+studentdata = client.open('RWB-SR Student Database').sheet1
 
-def get_db():
-    if 'db' not in g:
-        g.db = sqlite3.connect(DATABASE)
-        g.db.row_factory = sqlite3.Row
-    return g.db
+# def get_db():
+#     if 'db' not in g:
+#         g.db = sqlite3.connect(DATABASE)
+#         g.db.row_factory = sqlite3.Row
+#     return g.db
 
-@app.teardown_appcontext
-def close_db(error):
-    db = g.pop('db', None)
-    if db is not None:
-        db.close()
+# @app.teardown_appcontext
+# def close_db(error):
+#     db = g.pop('db', None)
+#     if db is not None:
+#         db.close()
 
 @app.route('/')
 def index():
@@ -31,16 +32,24 @@ def index():
         return redirect(url_for('dashboard'))
     return render_template('index.html')
 
+# @app.route('/search')
+# def search():
+#     student_id = request.args.get('studentID', '').strip()
+#     db = get_db()
+#     cur = db.execute('SELECT * FROM students WHERE id = ?', (student_id,))
+#     row = cur.fetchone()
+#     if row:
+#         return render_template('result.html', student=row, student_id=student_id)
+#     else:
+#         return render_template('result.html')
+
 @app.route('/search')
 def search():
     student_id = request.args.get('studentID', '').strip()
-    db = get_db()
-    cur = db.execute('SELECT * FROM students WHERE id = ?', (student_id,))
-    row = cur.fetchone()
-    if row:
-        return render_template('result.html', student=row, student_id=student_id)
-    else:
-        return render_template('result.html')
+    students = studentdata.get_all_records()
+    student = next((s for s in students if str(s['id']) == student_id), None)
+
+    return render_template('result.html', student=student, student_id=student_id)
 
 # @app.route('/login')
 # def login():
