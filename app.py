@@ -12,7 +12,7 @@ scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/au
 creds = ServiceAccountCredentials.from_json_keyfile_name('rwb-sb-account-db-da8565c59ec7.json', scope)
 client = gspread.authorize(creds)
 accountdata = client.open('RWB-SR Account Database').sheet1 # connecting account data google sheets naja
-studentdata = client.open('RWB-SR Student Database').sheet1
+studentdata = client.open('RWB-SR Student Database').worksheet("Sheet1")
 
 DEDUCTION_REASONS = {
     "101-123": ("", 5),
