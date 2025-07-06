@@ -64,66 +64,47 @@ def index():
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
-    student_id = request.values.get('studentID', '').strip()
+    student_id = request.args.get('studentID', '').strip() if request.method == 'GET' else request.form.get('studentID', '').strip()
     students = studentdata.get_all_records()
-
+    student_row_index = None
     student = None
-    row_index = None
-    for idx, s in enumerate(students, start=2):
+
+    for index, s in enumerate(students):
         if str(s['id']) == student_id:
             student = s
-            row_index = idx
+            student_row_index = index + 2  # +1 for 0-index +1 for header row
             break
 
-    if request.method == 'POST':
-        if 'user' not in session:
-            flash("ต้องเข้าสู่ระบบก่อน", "error")
-            return redirect(url_for('login'))
+    if request.method == 'POST' and 'user' in session and student_row_index:
+        reason_code = request.form.get('reason_code')
+        custom_reason = request.form.get('custom_reason_detail', '').strip()
 
-        reason_code = request.form['reason_code']
-        reason_text, deduct_score = DEDUCTION_REASONS.get(reason_code, ("ไม่ทราบเหตุผล", 0))
+        if reason_code not in DEDUCTION_REASONS:
+            flash("รหัสเหตุผลไม่ถูกต้อง", "error")
+        else:
+            reason_desc, deduct_points = DEDUCTION_REASONS[reason_code]
 
-        if reason_code == "513":
-            custom_detail = request.form.get("custom_reason_detail", "").strip()
-            if custom_detail:
-                reason_text = f"513 - {custom_detail}"
+            if reason_code == '513':
+                if not custom_reason:
+                    flash("กรุณากรอกรายละเอียดเหตุผล", "error")
+                    return redirect(url_for('search', studentID=student_id))
+                reason_desc = f"อื่นๆ: {custom_reason}"
 
-        try:
-            current_score = int(student['behaviour score'])
-            new_score = max(0, current_score - deduct_score)
-            # Update score
-            studentdata.update_cell(
-                row_index,
-                list(student.keys()).index('behaviour score') + 1,
-                new_score
-            )
+            try:
+                current_score = int(student['score'])
+                new_score = max(current_score - deduct_points, 0)
 
-            # Optional: log this deduction to a separate sheet
-            logsheet = client.open("RWB-SR Deduction Log").sheet1
-            logsheet.append_row([
-                datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                student['id'],
-                student['surname'] + ' ' + student['lastname'],
-                reason_text,
-                deduct_score,
-                session['user']
-            ])
+                studentdata.update_cell(student_row_index, 8, new_score)
 
-            # Refresh student
-            students = studentdata.get_all_records()
-            student = next((s for s in students if str(s['id']) == student_id), None)
+                flash(f"หักคะแนนสำเร็จ ({deduct_points} คะแนน) เหตุผล: {reason_desc}", "success")
+                student['score'] = new_score
+            except Exception as e:
+                print("ERROR →", e)
+                flash(f"เกิดข้อผิดพลาด: {str(e)}", "error")
 
-            flash(f"หักคะแนนสำเร็จ: {deduct_score} คะแนน ({reason_text})", "success")
-        except Exception as e:
-            flash("เกิดข้อผิดพลาด: ไม่สามารถหักคะแนนได้", "error")
+        return redirect(url_for('search', studentID=student_id))
 
-    return render_template(
-        'result.html',
-        student=student,
-        student_id=student_id,
-        deduction_reasons=DEDUCTION_REASONS
-    )
-
+    return render_template('result.html', student=student, student_id=student_id, deduction_reasons=DEDUCTION_REASONS)
 # @app.route('/login')
 # def login():
 #     return render_template('login.html')
