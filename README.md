@@ -7,7 +7,7 @@
 
 [**JavaScript**](https://www.java.com/en/)
 
-[**Google API & Service**](https://console.cloud.google.com/) (ใช้เชื่อม google sheets เป็น database)
+[**Google API & Service**](https://console.cloud.google.com/) (ใช้เชื่อม google sheets เป็น database) ***ต้องใช้ไฟล์ account-service.json ซึ่งอธิบายอยู่ด้านล่าง***
 
 **gspread oauth2client bcrypt**
 
