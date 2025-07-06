@@ -95,7 +95,7 @@ def search():
                 new_score = max(current_score - deduct_points, 0)
 
                 cell = f"H{student_row_index}"
-                studentdata.update(cell, new_score)
+                studentdata.update(cell, [[new_score]])
 
                 flash(f"หักคะแนนสำเร็จ ({deduct_points} คะแนน) เหตุผล: {reason_desc}", "success")
                 student['score'] = new_score
