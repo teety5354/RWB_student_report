@@ -13,7 +13,7 @@
 
 ## อาจจะได้ใช้
 
-[**datetime**](https://docs.python.org/3/library/datetime.html)
+[**datetime**](https://docs.python.org/3/library/datetime.html) (สำหรับทำ log/ประวัติการลบคะแนน) ***ย้ำว่าถ้าเวลาเหลือ***
 
 (สามารถกดลิงค์เพื่ออ่านคู่มือ/วิธีการลง Library พวกนี้ได้เลย)
 ## โปรเจคนี้ต้องใช้ไฟล์ account-service.json:
