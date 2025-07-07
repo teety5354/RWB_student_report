@@ -12,7 +12,7 @@ scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/au
 creds = ServiceAccountCredentials.from_json_keyfile_name('rwb-sb-account-db-da8565c59ec7.json', scope)
 client = gspread.authorize(creds)
 accountdata = client.open('RWB-SR Account Database').sheet1 # connecting account data google sheets naja
-studentdata = client.open('RWB-SR Student Database').worksheet("Sheet1")
+studentdata = client.open('RWB-SR Student Database').sheet1
 
 DEDUCTION_REASONS = {
     "101-123": ("", 5),
@@ -61,11 +61,14 @@ def index():
 
 #     return render_template('result.html', student=student, student_id=student_id, deduction_reasons=DEDUCTION_REASONS)
 
+EXPECTED_HEADERS = [
+    'no.', 'id', 'surname', 'lastname', 'grade', 'class', 'score'  # Add your actual header names here
+]
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     student_id = request.args.get('studentID', '').strip() if request.method == 'GET' else request.form.get('studentID', '').strip()
-    students = studentdata.get_all_records()
+    students = studentdata.get_all_records(expected_headers=EXPECTED_HEADERS)
     student_row_index = None
     student = None
 
@@ -97,7 +100,7 @@ def search():
                 cell = f"H{student_row_index}"
                 studentdata.update_cell(cell, 8, new_score)
 
-                flash(f"หักคะแนนสำเร็จ ({deduct_points} คะแนน) เหตุผล: {reason_desc}", "success")
+                flash(f"หักคะแนนสำเร็จ ({deduct_points} คะแนน){reason_desc}", "success")
                 student['score'] = new_score
             except Exception as e:
                 print("ERROR →", e)
