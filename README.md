@@ -11,9 +11,9 @@
 
 **gspread oauth2client bcrypt**
 
-## อาจจะได้ใช้
+## เดี๋ยวจะได้ใช้
 
-[**datetime**](https://docs.python.org/3/library/datetime.html) (สำหรับทำ log/ประวัติการลบคะแนน) ***ย้ำว่าถ้าเวลาเหลือ***
+[**datetime**](https://docs.python.org/3/library/datetime.html) (สำหรับทำ log/ประวัติการลบคะแนน)
 
 (สามารถกดลิงค์เพื่ออ่านคู่มือ/วิธีการลง Library พวกนี้ได้เลย)
 ## โปรเจคนี้ต้องใช้ไฟล์ account-service.json:
