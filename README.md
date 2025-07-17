@@ -26,13 +26,36 @@ python -m venv venv
 venv\Scripts\activate
 pip install flask gspread oauth2client bcrypt datetime
 ```
+โฟล์เดอร์ควรเป็นไปตามนี้
+```
+my-project/
+├── static
+│   ├── style1.css
+│   ├── style2.css
+│   ├── style3.css
+│   └── style4.css
+├── templates
+│   ├── dashboard.html
+│   ├── index.html
+│   ├── login.html
+│   └── result.html
+├── venv
+├── add_student.py
+├── app.py
+├── debugging.py
+├── delete_student.py
+├── init_db.py
+├── README.md
+├── rename_column
+└── .gitignore
+```
 # วิธีการ Run ในเครื่อง
 ***รันด้วย Command Prompt (Admin)***
 - เข้าถึงโฟลเดอร์ที่มีไฟล์อยู่
 ```
 cd myproject
 ```
-- รัน venv(.venv\Scripts\activiate)
+- รัน venv
 ```
 venv\Scripts\activiate
 ```
