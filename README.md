@@ -33,20 +33,18 @@ venv\Scripts\activate
 pip install flask gspread oauth2client bcrypt datetime
 ```
 # วิธีการ Run ในเครื่อง
-รันโค้ดด้วย CMD 
+***รันด้วย Command Prompt (Admin)***
 
-แก้โค้ดด้วย ***VScode/Python***
-
-เข้าถึงโฟลเดอร์ที่มีไฟล์อยู่ 
+- เข้าถึงโฟลเดอร์ที่มีไฟล์อยู่
 ```
 cd myproject
 ```
-รัน venv(.venv\Scripts\activiate)
+- รัน venv(.venv\Scripts\activiate)
 ```
 venv\Scripts\activiate
 ```
-ให้ขึ้น (venv) C:\Users\myproject> แสดงว่าถูกต้อง
-python (ชื่อไฟล์).(นามสกุลไฟล์)
+- ให้ขึ้น (venv) C:\Users\myproject> แสดงว่าถูกต้อง
+- python (ชื่อไฟล์).(นามสกุลไฟล์)
 ```
 python app.py
 ```
