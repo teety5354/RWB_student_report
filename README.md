@@ -50,10 +50,3 @@ python (ชื่อไฟล์).(นามสกุลไฟล์)
 ```
 python app.py
 ```
-
-# for prime\
-cd ที่อยู่
-
-venv\Scripts\activate
-
-py app.py
